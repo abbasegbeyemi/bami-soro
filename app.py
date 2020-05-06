@@ -7,7 +7,7 @@ from flask_debugtoolbar import DebugToolbarExtension
 from sqlalchemy import create_engine
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.urandom(16)
+app.config.from_object(os.environ['APP_SETTINGS'])
 # login_manager = LoginManager()
 # login_manager.init_app(app)
 
