@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous">
+    <!-- ===Favicon Link===-->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <!-- ==============================
+    [ Socket IO script ] -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"
+            integrity="sha256-bQmrZe4yPnQrLTY+1gYylfNMBuGfnT/HKsCGX+9Xuqo=" crossorigin="anonymous"></script>
+    <!-- ==============================
+    [ Import the JS file that handles the forms ] -->
+    <script type="text/javascript" src="{{ url_for('static', filename='javascript/home.js') }}"></script>
+    <!-- ==============================
+    [ Template CSS ] -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/homestyle.css') }}">
+    <title> bamisoro - Home </title>
+</head>
+<body>
+    <nav class="navbar px-5 py-3 navbar-expand justify-content-center">
+        <a href="" class="navbar-brand pl-5">
+            <img class="img-fluid"
+                 src="{{ url_for('static', filename="images/bm-logo-image.png") }}"
+                 alt="Bamisoro Logo">
+            <span id="logo-name" class="mx-2 h1">bamisoro</span>
+        </a>
+        <div class="container">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item px-3">
+                    <p class="m-0 h4">
+                        Logged in as
+                        <span class="username">
+                            {{ current_user.firstname }} {{ current_user.lastname }}
+                        </span></p>
+                        <span id="username" style="display: none">{{ current_user.username }}</span>
+                </li>
+                <li class="nav-item px-3">
+                    <a id="logout" href="{{ url_for('logout') }}" class="m-0 py-0 nav-link h4">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- ==============================
+    [ Defining the popup modal for creating a channel ] -->
+    <div class="modal fade" id="create-channel-modal" tabindex="-1" role="dialog"
+         aria-labelledby="create-channel-modal" aria-hidden="true">
+        <div class="modal-dialog" role="form">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Create a Channel</h5>
+                    <button type="button" class="close" aria-label="Close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form novalidate class="needs-validation" id="create-channel-form">
+                        <label for="channel-name"></label>
+                        <input id="channel-name" class="form-control" type="text" placeholder="Channel Name"
+                               aria-label="channel Name" required>
+                        <div id="modal-feedback" class="invalid-feedback">Channel needs a name.</div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button id="create-channel-confirm" class="btn btn-primary submit"
+                            >Save
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row" id="public-section">
+            <div class="col-4">
+                <div class="list-group" id="channels-section">
+
+                </div>
+                <button type="button" id="trigger-create-channel" data-toggle="modal" data-target="#create-channel-modal" class="btn btn-primary">
+                    Create Channel
+                </button>
+            </div>
+            <div class="col-8">
+                <div id="messages-section" class="tab-content" role="tablist">
+
+                </div>
+                <label for="message-box" style="display: none"></label>
+                <div id="message-send-group" class="row px-3">
+                    <textarea name="message" id="message-box" class="col form-control" rows="2"></textarea>
+                    <button class="btn btn-primary col-auto" id="send-message-button">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ==============================
+    [ Bootstrap specific js requirements ] -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
+</body>
+</html>

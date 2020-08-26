@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Karla:wght@400;700&family=Jost:wght@400;500;700&family=Itim&family=Orbitron:wght@400;500;700&family=Poiret+One&display=swap");
+body {
+  font-family: "Karla", sans-serif, "Jost", sans-serif, "Poiret One", "Itim", cursive, cursive;
+}
+
+a > img {
+  width: 70px;
+}
+
+.username {
+  color: #00E3FF;
+}
+
+#logout {
+  color: #F800FF;
+}
+
+#logo-name {
+  vertical-align: middle;
+  color: black;
+}
+
+#public-section {
+  height: 500px;
+}
+
+#channels-section {
+  border: 2px black solid;
+  height: 100%;
+}
+
+#messages-section {
+  border: 2px black solid;
+  height: 100%;
+  margin-bottom: 0;
+}
+
+.submit {
+  background-color: #00E3FF;
+  border: none;
+}
+
+/*# sourceMappingURL=homestyle.css.map */
